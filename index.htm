@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4a47a3">
+    <title>Controle Financeiro</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon"
+        href="img/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Controle Financeiro</h1>
+
+        <form id="form-gastos">
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" placeholder="Ex: Almoço, Café" required>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor (R$)</label>
+                <input type="number" id="valor" placeholder="Ex: 25.50" step="0.01" required>
+            </div>
+            <button type="submit" class="btn-adicionar">Adicionar Gasto</button>
+        </form>
+
+        <!-- AJUSTE: Transformamos a div em uma seção para melhor semântica -->
+        <section id="secao-gastos-hoje">
+            <h2>Gastos de Hoje</h2>
+            <!-- 
+                AJUSTE CRÍTICO: Adicionamos a <ul> com o ID 'lista-gastos'.
+                É neste elemento que o nosso JavaScript vai adicionar os itens
+                e, mais importante, é onde ele vai "ouvir" os cliques nos 
+                botões de excluir para que a função de apagar funcione.
+            -->
+            <ul id="lista-gastos">
+                <!-- Conteúdo dos gastos de hoje será gerado aqui pelo JS -->
+            </ul>
+        </section>
+
+        <hr>
+
+        <div class="botoes-acao">
+            <button id="btn-historico" class="btn-secundario">Ver/Esconder Histórico</button>
+            <button id="btn-pdf" class="btn-secundario">Baixar Histórico (PDF)</button>
+        </div>
+
+        <!-- Container do histórico (inicialmente oculto) -->
+        <div id="historico-container" style="display: none;">
+            <!-- Conteúdo do histórico gerado pelo JS -->
+        </div>
+    </div>
+
+    <!-- Biblioteca jsPDF para gerar o PDF (deve vir antes de app.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Nosso script principal -->
+    <script src="app.js"></script>
+</body>
+
+</html>
